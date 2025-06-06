@@ -1,9 +1,25 @@
 
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TravelPage from "./assets/pages/TravelPage";
+import HomePage from "./assets/pages/HomePage";
+import DefaultLayout from "./layouts/DefaultLayout";
+
+const App = () => {
 
   return (
     <>
-      <h1>Hello ihihihhi!</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/travelpage" element={<TravelPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+    
+      
+
+      
     </>
   )
 }
