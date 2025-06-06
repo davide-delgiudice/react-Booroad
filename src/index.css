@@ -1,3 +1,22 @@
 .active {
   color: yellow;
 }
+
+.container-modale {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: rgba(95, 95, 95, 0.541);
+}
+
+.modale {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+a {
+  text-decoration: none;
+}
