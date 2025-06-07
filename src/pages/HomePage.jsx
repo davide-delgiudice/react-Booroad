@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Card from '../components/Card'
 
 const viaggi = [
   {
@@ -34,8 +35,6 @@ const viaggi = [
 
 const HomePage = () => {
 
-  // const [selectedTrip, setSelectedTrip] = useState(null);
-
   return (
     <div className='container'>
       <div className='row'>
@@ -43,16 +42,7 @@ const HomePage = () => {
           <div>
             {viaggi.map((viaggio) => {
               return (
-                <Link to="/travelpage">
-                  <div className='card'>
-                    <div className="">
-                      <h5>{viaggio.nomeViaggio}</h5>
-                      <p>{viaggio.tipologia}</p>
-                      <p>{viaggio.dataInizio}</p>
-                      <p>{viaggio.dataFine}</p>
-                    </div>
-                  </div>
-                </Link>
+                <Card key={`viaggio-${viaggio.id}`} data={viaggio} />
               )
             })}
           </div>

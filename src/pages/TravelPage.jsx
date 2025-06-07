@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Card from '../components/Card';
 
 const partecipanti = [
     {
@@ -101,14 +103,13 @@ const TravelPage = () => {
     const [filteredPeople, setFilteredPeople] = useState(partecipanti)
     const [filter, setFilter] = useState("");
 
-    useEffect(() => {
-        const partecipantiFiltrati = partecipanti.filter(p => p.nome.includes(filter))
+    const { id } = useParams();
 
-        if (filter === '') {
-            setFilteredPeople(partecipanti)
-        } else {
-            setFilteredPeople(partecipantiFiltrati)
-        }
+    useEffect(() => {
+        const partecipantiFiltrati = partecipanti.filter((p) => `${p.nome} ${p.cognome}`.toLowerCase().includes(filter.toLowerCase()))
+
+        setFilteredPeople(partecipantiFiltrati)
+
     }, [filter])
 
     const handleModalContent = (partecipante) => {
@@ -118,14 +119,14 @@ const TravelPage = () => {
 
     return (
         <>
-            <div className="container-fluid">
+            <div className="container-fluid mt-5">
                 <div className="row">
-                    <h1>TravelPage</h1>
-                    <div className="">
+                    <h1 className="text-dark fs-1 fw-bold text-center">{id}</h1>
+                    <div className="text-center">
                         <div>
                             <input
                                 name='name'
-                                className="input-box"
+                                className="input-box "
                                 type='text'
                                 placeholder='Cerca un partecipante...'
                                 value={filter}
@@ -134,14 +135,9 @@ const TravelPage = () => {
                         </div>
                     </div>
                     <div className="col-12">
-                        {filteredPeople.map((partecipante) => {
-                            return (
-                                <div key={partecipante.id} className="card d-flex" onClick={() => handleModalContent(partecipante)}>
-                                    <h5>{partecipante.nome}</h5>
-                                    <h5>{partecipante.cognome}</h5>
-                                </div>
-                            )
-                        })}
+                        {filteredPeople.filter((partecipante) => partecipante.destinazione === id).map((partecipante) => (
+                            <Card key={`partecipante-${partecipante.id}`} data={partecipante} onClick={() => handleModalContent(partecipante)} />
+                        ))}
                     </div>
                 </div>
             </div>
@@ -157,7 +153,7 @@ const TravelPage = () => {
                                 <p>{selected.email}</p>
                                 <p>{selected.cf}</p>
                             </div>
-                            <div className="">
+                            <div className="d-flex justify-content-around">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => setIsModalOpen(false)}>Close</button>
                                 <button type="button" className="btn btn-primary">Contatta</button>
                             </div>
@@ -170,3 +166,5 @@ const TravelPage = () => {
 }
 
 export default TravelPage
+
+
