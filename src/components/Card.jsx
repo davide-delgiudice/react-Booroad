@@ -15,8 +15,6 @@ const Card = ({ data, onClick }) => {
                         <Link to={`/travelpage/${data.nomeViaggio}`} className='btn btn-primary'>Vai al viaggio</Link>
                     </>
                 )}
-
-
             </div>
         </div>
     )

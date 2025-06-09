@@ -21,13 +21,12 @@ a {
   text-decoration: none;
 }
 
-body{
+/* body{
  background-image: url("./src/assets/image/sfondo.jpg");
  background-repeat: no-repeat;
  height: 100vh;
  background-size: cover;
- 
-}
+} */
 
 .dim-logo{
   width: 70px;
