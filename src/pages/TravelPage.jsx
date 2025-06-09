@@ -99,7 +99,7 @@ const partecipanti = [
 ];
 
 const TravelPage = () => {
-  const { id } = useParams();
+  const { nomeViaggio } = useParams();
   /* nuovo stato che cambia i partecipanti */
   const [allPartecipants, setAllPartecipants] = useState(partecipanti);
   /* stati per i filtri dei partecipanti */
@@ -154,11 +154,11 @@ const TravelPage = () => {
       cognome,
       telefono,
       email,
-      destinazione: id,
+      destinazione: nomeViaggio,
       cf,
     };
 
-    /* aggiungo all'array dei partecipanti (current) òla newPersona */
+    /* aggiungo all'array dei partecipanti (current) la newPerson */
     setAllPartecipants((currentPeople) => [...currentPeople, newPerson]);
 
     /* svuoto tutte cose */
@@ -177,25 +177,26 @@ const TravelPage = () => {
     <>
       <div className="container">
         <div className="row justify-content-center">
-          <h1 className="text-dark fs-1 fw-bold text-center">{id}</h1>
+          <h1 className="text-dark fs-1 fw-bold text-center">{nomeViaggio}</h1>
 
           <Filter filter={filter} setFilter={setFilter} />
 
           <div className="col-12">
             {filteredPeople
               .filter(
-                (partecipante) => partecipante.destinazione.trim() === id.trim()
+                (partecipante) => partecipante.destinazione.trim() === nomeViaggio.trim()
               )
               .map((partecipante) => (
                 <Card
                   key={`partecipante-${partecipante.id}`}
-                  data={partecipante}
                   onClick={() => handleModalContent(partecipante)}
+                  nome={partecipante.nome}
+                  cognome={partecipante.cognome}
                 />
               ))}
           </div>
         </div>
-        <div className="row">
+        <div className="row form-size">
           <Form
             handleSubmit={handleSubmit}
             handleChange={handleChange}

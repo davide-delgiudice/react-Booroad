@@ -6,13 +6,9 @@ const DefaultLayout = () => {
   return (
     <>
       <Header />
-
       <main
         style={{
           backgroundImage: `url(${sfondo})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          height: "100vh",
         }}
       >
         <Outlet />

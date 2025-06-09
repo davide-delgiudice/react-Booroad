@@ -9,6 +9,7 @@ const viaggi = [
     tipologia: "Culturale",
     dataInizio: "2025-06-10",
     dataFine: "2025-06-14",
+    accompagnatori: 2
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const viaggi = [
     tipologia: "Vacanza",
     dataInizio: "2025-07-05",
     dataFine: "2025-07-12",
+    accompagnatori: 1
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const viaggi = [
     tipologia: "Natura",
     dataInizio: "2025-08-01",
     dataFine: "2025-08-07",
+    accompagnatori: 2
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const viaggi = [
     tipologia: "Città",
     dataInizio: "2025-09-15",
     dataFine: "2025-09-20",
+    accompagnatori: 1
   },
 ];
 
@@ -40,7 +44,15 @@ const HomePage = () => {
         <div className="col-12">
           <div>
             {viaggi.map((viaggio) => {
-              return <Card key={`viaggio-${viaggio.id}`} data={viaggio} />;
+              return <Card 
+                        key={`viaggio-${viaggio.id}`} 
+                        nomeViaggio = {viaggio.nomeViaggio}
+                        id = {viaggio.id}
+                        isTrip = {true}
+                        dataInizio = {viaggio.dataInizio}
+                        dataFine = {viaggio.dataFine}
+                        accompagnatori = {viaggio.accompagnatori}
+                      />;
             })}
           </div>
         </div>

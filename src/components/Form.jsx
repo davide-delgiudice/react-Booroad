@@ -7,7 +7,7 @@ const Form = ({ formData, handleSubmit, handleChange }) => {
         <div className="col-12">
           <div className="row py-3">
             <div className="col d-flex justify-content-between align-items-center">
-              <h2 className="fw-bold text-white">Aggiungi un cristiano</h2>
+              <h2 className="fw-bold text-white">Aggiungi un passeggero</h2>
               <button type="submit" className="btn btn-warning">
                 Aggiungi
               </button>
